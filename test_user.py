@@ -11,8 +11,7 @@ def mock_work(*args, **kwargs):
     return False
 
 def test_me():
-    with patch('user.User') as mock_user:
-        usr = mock_user.return_value
-        usr.work.side_effect = mock_work
+    with patch('user.User.work', side_effect=mock_work) as mocked_work:
         me = Me("me")
         assert not me.work()
+        mocked_work.assert_called_with(cheat=True, done=False)

@@ -14,12 +14,9 @@ class User(object):
         return done
 
 
-class Me(object):
+class Me(User):
     def __init__(self, name):
-        #super(Me, self).__init__(name)
-        self.name = name
+        super(Me, self).__init__(name)
 
     def work(self, cheat=False, done=False):
-        #return super().work(cheat=True, done=False)
-        user = User(self.name)
-        return user.work(cheat=True, done=False)
+        return super().work(cheat=True, done=False)
